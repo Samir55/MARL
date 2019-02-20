@@ -34,9 +34,10 @@ class Environment:
 
         # Initialize the agents number.
         self.agents = []
-        self.agents.append(
-            Agent(np.random.randint(0, Environment.WINDOW_WIDTH // Environment.CELL_LENGTH),
-                  np.random.randint(0, Environment.WINDOW_HEIGHT // Environment.CELL_LENGTH)))
+        for i in range(np.random.randint(1, Environment.MAX_NUMBER_OF_AGENTS)):
+            self.agents.append(
+                Agent(np.random.randint(0, Environment.WINDOW_WIDTH // Environment.CELL_LENGTH),
+                      np.random.randint(0, Environment.WINDOW_HEIGHT // Environment.CELL_LENGTH)))
 
         # Initialize the grid.
         self.grid = np.zeros((Environment.WINDOW_HEIGHT, Environment.WINDOW_WIDTH))
@@ -69,14 +70,15 @@ class Environment:
             pygame.draw.line(self.game_window, Environment.BLACK, (0, j), (Environment.WINDOW_WIDTH - 1, j))
 
         # Draw the agents.
-        robot_loaded = pygame.image.load(Environment.ROBOT_LOADED).convert_alpha()
-        robot_loaded = pygame.transform.scale(robot_loaded,
-                                              (Environment.CELL_LENGTH - 2 * Environment.PADDING,
-                                               Environment.CELL_LENGTH - 2 * Environment.PADDING))
-        robot_loaded_rect = (
-            self.agents[0].pos[0] * Environment.CELL_LENGTH + Environment.PADDING,
-            self.agents[0].pos[1] * Environment.CELL_LENGTH + Environment.PADDING)
-        self.game_window.blit(robot_loaded, robot_loaded_rect)
+        for agent in self.agents:
+            robot_loaded = pygame.image.load(Environment.ROBOT_LOADED).convert_alpha()
+            robot_loaded = pygame.transform.scale(robot_loaded,
+                                                  (Environment.CELL_LENGTH - 2 * Environment.PADDING,
+                                                   Environment.CELL_LENGTH - 2 * Environment.PADDING))
+            robot_loaded_rect = (
+                agent.pos[0] * Environment.CELL_LENGTH + Environment.PADDING,
+                agent.pos[1] * Environment.CELL_LENGTH + Environment.PADDING)
+            self.game_window.blit(robot_loaded, robot_loaded_rect)
 
         # Draw the target flag.
         flag = pygame.image.load(Environment.TARGET_FLAG).convert_alpha()
@@ -91,6 +93,7 @@ class Environment:
         # Draw the score TODO.
 
         # Draw the balls TODO
+
 
         # Update pygame display(required).
         pygame.display.update()

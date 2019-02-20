@@ -19,7 +19,7 @@ if __name__ == "__main__":
         e.draw()
 
         # Temproraly update the agent position for testing
-        e.agents[0].pos = (e.agents[0].pos[0] + 1, e.agents[0].pos[1])
+        # e.agents[0].pos = (e.agents[0].pos[0] + 1, e.agents[0].pos[1])
 
         # Add some delay to see the drawing.
         pygame.time.delay(100)
