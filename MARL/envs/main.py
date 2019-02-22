@@ -2,7 +2,7 @@ import sys
 
 import pygame
 
-from src.environment import Environment
+from MARL.envs.environment import Environment
 
 if __name__ == "__main__":
 
