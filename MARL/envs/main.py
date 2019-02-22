@@ -2,13 +2,13 @@ import sys
 
 import pygame
 
-from MARL.envs.environment import Environment
+from MARL.envs.marl_env import MARLEnv
 
 if __name__ == "__main__":
 
     print("Creating the environment")
     running = True
-    e = Environment()
+    e = MARLEnv()
 
     while running:
         # Check for events
@@ -16,7 +16,7 @@ if __name__ == "__main__":
             if event.type == pygame.QUIT:
                 running = False
 
-        e.draw()
+        e.render()
 
         # Temproraly update the agent position for testing
         # e.agents[0].pos = (e.agents[0].pos[0] + 1, e.agents[0].pos[1])
