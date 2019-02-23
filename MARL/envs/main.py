@@ -12,9 +12,23 @@ if __name__ == "__main__":
 
     while running:
         # Check for events
-        for event in pygame.event.get():
+        events = pygame.event.get()
+        for event in events:
             if event.type == pygame.QUIT:
                 running = False
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LEFT:
+                    e.step(0)
+                elif event.key == pygame.K_RIGHT:
+                    e.step(1)
+                elif event.key == pygame.K_UP:
+                    e.step(2)
+                elif event.key == pygame.K_DOWN:
+                    e.step(3)
+                elif event.key == pygame.K_p:
+                    e.step(4)
+                elif event.key == pygame.K_d:
+                    e.step(5)
 
         e.render()
 
